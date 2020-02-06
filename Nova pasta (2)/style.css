@@ -1,0 +1,46 @@
+body{
+    background-color:#fff;
+
+}
+h5{
+  
+  text-align: center;
+  padding: 5px;  
+}
+
+/*NAVEGACAO*/
+.nav-item{
+    padding: 10px;
+    margin-right: 20px;
+    color: white;
+}
+/*FORMULARIOS*/
+
+.form-control{
+    border-radius: 0;
+    
+}
+/*CONTEÚDO*/
+h3{
+    text-align: center;
+  }
+  #ex-p{
+    margin-top: 5%;
+  }
+  table, th, td{
+    border: 1px solid;
+    padding: 15px;
+    text-align: center;
+  }
+  h6{
+    text-align: center;
+    color: #3EB489;
+  }
+  
+/*RODAPÉ*/
+.page-footer{
+    background-color: #3EB489;
+    color: white;
+}
+
+

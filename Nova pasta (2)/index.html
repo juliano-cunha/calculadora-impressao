@@ -1,0 +1,419 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <!--Cabeçalho-->
+      <nav class="navbar navbar-dark" style="background-color: #3EB489">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo_compare_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Calculadora de impressão
+        </a>
+        <ul class="nav">
+          <a href="#">
+            <li class="nav-item">HOME</li>
+          </a>
+          <a href="#">
+            <li class="nav-item">CALCULADORAS</li>
+          </a>
+          <a href="#">
+            <li class="nav-item">SOBRE</li>
+          </a>
+        </ul>
+      </nav>
+    <!--corpo/formulario-->
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="side-list">
+            <div class="sidebar-header">
+              <p>Ferramentas</p>
+            </div>
+            <div class="list-group rounded-0">
+              <a href="#">
+                <li class="list-group-item list-group-item-action rounded-0">Básica</li>
+              </a>
+              <a href="#">
+                <li class="list-group-item list-group-item-action rounded-0">Completa</li>
+              </a>
+              <a href="#">
+                <li class="list-group-item list-group-item-action rounded-0">Velocidade de impressão</li>
+              </a>
+            </div>
+          </div>
+          </div>
+          <form>
+            <div class="form-group row">
+              <div class="col-md-8">
+                <h5>Cálculo básico</h5>
+              </div>
+            </div> 
+            <div class="form-group row">
+                <label for="inputm" class="col-md-4">Média impressões mensais</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="páginas" id="input_mm"/>
+                </div>  
+            </div>
+             <div class="form-group row">
+                <label for="inputm" class="col-md-4">Valor toner</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="R$" id="input_vt"/>
+                </div>  
+            </div>
+             <div class="form-group row">
+                <label for="inputm" class="col-md-4">Rendimento do toner</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="páginas" id="input_vr"/>
+                </div>  
+            </div>
+             <div class="form-group row">
+                <label for="inputm" class="col-md-4">Cobertura da página</label>
+                <div class="col-md-4">
+                  <input type="range" class="form-control-range"  min="0" max="100" value="5" /> 
+                  <small id="cobertura_help" class="form-text text-muted">*padrão utilizado pelos fabricantes é 5% de cobertura, se necessário habilite o campo acima.</small>
+                </div>    
+            </div>
+             <div class="form-group row">
+                <div class="col-md-8">
+                  <button type="submit" class="btn btn-outline-success btn-block" onclick="calcBasico()">Calcular</button>
+                </div>  
+            </div>
+          </form>
+            
+        </div> 
+      <div class="row">
+        
+        <div class="col-md-8"> 
+          <form>
+            <div class="form-group row">
+              <div class="col-md-8">
+                <h5>Resultado</h5>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputm" class="col-md-4">Custo página (CPP)</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="R$" id="res_cpp"/>
+                </div>  
+            </div>
+            <div class="form-group row">
+                <label for="inputm" class="col-md-4">Custo mensal</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="R$" id="res_cm"/>
+                </div>  
+            </div>
+          </form>  
+        </div>
+      </div>
+    
+      <!--conteúdo-->  
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-7">
+          <div class="form-sub-title" id="ex-p">
+            <h5>Como calcular?</h5>
+          </div>
+          <div class="ex-text">
+            <h6>COMO CALCULAR O CONSUMO DE TONER DE ACORDO COM A ÁREA DE COBERTURA</h6>
+  
+            <h6>INFORMAÇÕES NECESSÁRIAS PARA CALCULARMOS</h6>
+            <br />
+            <p>
+              Para o cálculo completo:
+            </p>
+            <p>
+              É necessário reunir as informações sobre rendimento e valor pago dos seguintes itens:
+            </p>
+            <ul>
+              <li>Toner preto;</li>
+              <li> Toner colorido (amarelo, ciano e magenta);</li>
+              <li> Cilindro preto;</li>
+              <li>Cilindro colorido (amarelo, ciano e magenta);</li>
+              <li>Caixa de manutenção (quando há);</li>
+              <li> Fusão;</li>
+            </ul>
+            <p>
+              <strong>Dica: </strong> As informações sobre os rendimentos das peças e toners você encontra
+              no catálogo da impressora ou diretamente no site do fabricante.
+              No final, você terá algo parecido com isto:
+            </p>
+            <table class="table-pd">
+              <tr>
+                <th>Suprimento</th>
+                <th>Rendimento</th>
+                <th>Valor</th>
+              </tr>
+              <tr>
+                <td>Toner preto</td>
+                <td>10000 (5%)</td>
+                <td>600R$</td>
+              </tr>
+              <tr>
+                <td>Toner colorido</td>
+                <td>10000 (5%)</td>
+                <td>600R$</td>
+              </tr>
+              <tr>
+                <td>Cilindro preto</td>
+                <td>60000</td>
+                <td>1.200R$</td>
+              </tr>
+              <tr>
+                <td>Cilindro colorido</td>
+                <td>60000</td>
+                <td>1.200R$(x3)</td>
+              </tr>
+              <tr>
+                <td>Fusor</td>
+                <td>100000</td>
+                <td>2.000R$</td>
+              </tr>
+            </table>
+            <br />
+            <p>
+              <strong>Obs: </strong> Os valores de rendimento dos toners estão considerando a taxa
+              de cobertura padrão do fabricante (5%). Mas na calculadora é possível alterar para atender sua demanda
+            </p>
+            <br />
+            <h6>COMO CALCULAR O CONSUMO DE TONER DE ACORDO COM A ÁREA DE COBERTURA</h6>
+            <br />
+            <p>
+              Os fabricantes indicam a quantidade de páginas que a impressora consegue imprimir
+              com cada toner, essa estimativa é feita com base em uma área de cobertura de 5%.
+              <br></br>
+              A área de cobertura indica a quantidade de tinta que vai cobrir o papel.
+              <br></br>
+              Para um cálculo estimado não é necessário alterar a área de cobertura, mas caso deseje
+              um resultado real é necessário alterar a taxa de acordo com sua demanda.
+              <br></br>
+              Para descobrir o rendimento real dos toners basta aplicar o seguinte cálculo:
+              <br></br>
+              (percentual de cobertura padrão / percentual de cobertura que deseja) x rendimento do toner com a cobertura padrão
+              <strong>obs: </strong>(com a calculadora basta apenas alterar a porcentagem que este cálculo já é realizado.)
+              <br></br>
+              <strong>Exemplo: </strong> Para calcular o rendimento do toner com 80%, teremos que dividir
+              este número pela quantidade de toners da impressora, ou seja: <strong>80/4 = 20.</strong>
+              <br></br>
+              Depois, aplicamos o resultado à fórmula anterior.
+              <br></br>
+              Assim teremos: <strong>(5/20) x 10000</strong> = 2500
+              <br></br>
+              Então, se antes a impressora era capaz de imprimir 10000 páginas (5% de cobertura), agora ela
+              suporta apenas 2500 páginas (80% de cobertura).
+              Confira como ficou nossa tabela de rendimento com a área de cobertura de 80%:
+            </p>
+            <table class="table-pd">
+              <tr>
+                <th>Suprimento</th>
+                <th>Rendimento</th>
+                <th>Valor</th>
+              </tr>
+              <tr>
+                <td>Toner preto</td>
+                <td>2500 (80%)</td>
+                <td>600R$</td>
+              </tr>
+              <tr>
+                <td>Toner colorido</td>
+                <td>2500 (80%)</td>
+                <td>600R$ (x3)</td>
+              </tr>
+              <tr>
+                <td>Cilindro preto</td>
+                <td>60000</td>
+                <td>1.200R$</td>
+              </tr>
+              <tr>
+                <td>Cilindro colorido</td>
+                <td>60000</td>
+                <td>1.200R$(x3)</td>
+              </tr>
+              <tr>
+                <td>Fusor</td>
+                <td>100000</td>
+                <td>2.000R$</td>
+              </tr>
+            </table>
+            <br />
+            <h6>CÁLCULO DO CUSTO PÁGINA</h6>
+            <br />
+            <table class="table-pd">
+              <tr>
+                <th>Suprimento</th>
+                <th>Rendimento</th>
+                <th>Valor</th>
+              </tr>
+              <tr>
+                <td>Toner preto</td>
+                <td>2500 (80%)</td>
+                <td>600R$</td>
+              </tr>
+              <tr>
+                <td>Toner colorido</td>
+                <td>2500 (80%)</td>
+                <td>600R$ (x3)</td>
+              </tr>
+            </table>
+            <br />
+            <p>
+              Com esses valores podemos aplicar a fórmula: <strong>rendimento / valor.</strong>
+              <br /><br />
+              Ou seja:
+              <br />
+              <ul>
+                <li><strong>Custo por página do toner preto: 600 / 2500 = 0,2.</strong></li>
+              </ul>
+              Para calcular o custo dos toners coloridos, usaremos a mesma fórmula, porém, como são 3 toners, o resultado é multiplicado por 3.
+              <br /><br />
+              <strong>Obs: </strong> Caso os valores dos toners tenham diferença de valor devem ser calculados separadamente.
+              <br /><br />
+              <ul>
+                <li> <strong>Custo por página dos toners coloridos: (600 / 2500) x 3 = 0,72.</strong></li>
+              </ul>
+              <br />
+              <strong>Obs: </strong> Os valores quebrados são arredondados no cálculo acima, bem como na calculadora.
+            </p>
+            <br />
+            <h6>CUSTOS COM PEÇAS CONSUMÍVEIS</h6>
+            <br />
+            <p>
+              Para um cálculo mais apurado também podemos levar em consideração algumas
+              peças consumíveis pois podem ser trocados regularmente, dependendo as quantidades mensais
+              <br /><br />
+              No exemplo as peças consideradas são:
+            </p>
+            <table class="table-pd">
+              <tr>
+                <th>Suprimento</th>
+                <th>Rendimento</th>
+                <th>Valor</th>
+              </tr>
+              <tr>
+                <td>Cilindro preto</td>
+                <td>60.000</td>
+                <td>1.200R$</td>
+              </tr>
+              <tr>
+                <td>Cilindro colorido</td>
+                <td>60.000</td>
+                <td>1.200R$(x3)</td>
+              </tr>
+              <tr>
+                <td>Fusor</td>
+                <td>100.000</td>
+                <td>2.000R$</td>
+              </tr>
+            </table>
+            <br />
+            <p>
+              <strong>Obs: </strong>Estamos considerando somente os principais consumíveis.
+              <br /><br />
+              Para calcular os custos de impressão das peças da consumíveis da impressora, aplicamos a mesm
+              a fórmula que utilizamos no cálculo do custo página: <strong>rendimento / valor.</strong>
+              <br /><br />
+              Vamos aos resultados:
+              <ul>
+                <li>Custo por página do cilindro preto: <strong>1200 / 60000 = 0,02.</strong></li>
+                <li>Custo por página dos cilindros coloridos: <strong>(1200/650000) x 3 = 0,06.</strong></li>
+                <li>Custo por página da fusão: <strong>2000 / 100000 = 0,02.</strong></li>
+              </ul>
+            </p>
+            <br />
+            <h6>COMO CALCULAR OS CUSTOS COM PAPÉIS</h6>
+            <br />
+            <p>
+              O custo com papel é outra variável que podemos considerar basta dividir o valor pago pelo papel, pela quantidade de impressões realizadas.
+              <br /><br />
+              Em nosso caso, vamos imaginar que uma resma com 500 folhas custe R$ 30,00.
+              <br /><br />
+              Como nós projetamos a quantidade de 2500 impressões, teremos que comprar 5 resmas de 500 folhas, o que nos dá um custo total de R$ 150.
+              <br /><br />
+              O resultado final:
+            </p>
+            <ul>
+              <li>Custo por página com papel: <strong>150 / 2500 = 0,06.</strong></li>
+            </ul>
+            <br />
+            <h6>RESULTADO FINAL</h6>
+            <br />
+            <p>
+              Depois de levar em conta todas as variáveis somamos tudo para descobrir o custo real por página da impressora.
+              <br /><br />
+              Confira:
+            </p>
+            <table class="table-pd">
+              <tr>
+                <th>Suprimento</th>
+                <th>Rendimento</th>
+                <th>Valor</th>
+                <th>Custo por página</th>
+              </tr>
+              <tr>
+                <td>Toner preto</td>
+                <td>2500 (80%)</td>
+                <td>600R$</td>
+                <td>0,2</td>
+              </tr>
+              <tr>
+                <td>Toner colorido</td>
+                <td>2500 (80%)</td>
+                <td>600R$ (x3)</td>
+                <td>0,72</td>
+              </tr>
+              <tr>
+                <td>Cilindro preto</td>
+                <td>60.000</td>
+                <td>1.200R$</td>
+                <td>0,02</td>
+              </tr>
+              <tr>
+                <td>Cilindro colorido</td>
+                <td>60.000</td>
+                <td>1.200R$ (x3)</td>
+                <td>0,06</td>
+              </tr>
+              <tr>
+                <td>Fusor</td>
+                <td>100.000</td>
+                <td>2.000R$</td>
+                <td>0,02</td>
+              </tr>
+              <tr>
+                <td>papel</td>
+                <td>2.500</td>
+                <td>150R$</td>
+                <td>0,06</td>
+              </tr>
+              <tr>
+                <td colspan="3"><strong>Custo total por página</strong></td>
+                <td><strong>R$ 1,02</strong></td>
+              </tr>
+            </table>
+            <br />
+            <p>
+              <br />
+              Pronto!
+              <br /><br />
+              Através dessa fórmula você pode calcular o custo e impressão da sua empresa.
+              <br /><br />
+              Lembrando que caso queira o valor real, basta utilizar a calculadora completa (link aqui) ao lado que
+              todas essas variáveis são levadas em consideração, basta preencher todos os campos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+    <!--rodapé-->
+    <footer class="page-footer">
+      <div class="footer-copyright text-center py-3">©2019 copyright
+        <a href="#">calculadoraimpressao.com.br</a>
+      </div>
+    </footer>
+  </body>
+</html>
